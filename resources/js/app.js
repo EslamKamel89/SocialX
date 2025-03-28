@@ -1,6 +1,6 @@
+import intersect from "@alpinejs/intersect";
 import { Livewire } from "../../vendor/livewire/livewire/dist/livewire.esm";
 import "./bootstrap";
-
-// Alpine.plugin(Clipboard)
+Alpine.plugin(intersect);
 
 Livewire.start();
