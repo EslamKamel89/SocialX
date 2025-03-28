@@ -16,7 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="mb-16 font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         <livewire:layout.navigation />
 
