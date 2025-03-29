@@ -11,7 +11,7 @@ class pr {
      * @return T
      */
     public static function log($value, string | null $title = null) {
-        info("-=-=-=-=--=- -=-=-=-=--=- {$title} -=-=-=-=--=- -=-=-=-=--=-");
+        info("-=-=-=-=--=- -=-=-=-=--=-{$title}-=-=-=-=--=- -=-=-=-=--=-");
         info(json_encode($value));
         return $value;
     }
@@ -23,7 +23,7 @@ class pr {
      * @return T
      */
     public static function dump($value, string | null $title = null) {
-        info("-=-=-=-=--=- -=-=-=-=--=- {$title} -=-=-=-=--=- -=-=-=-=--=-");
+        dump("-=-=-=-=--=- -=-=-=-=--=-{$title}-=-=-=-=--=- -=-=-=-=--=-");
         dump($value);
         return $value;
     }

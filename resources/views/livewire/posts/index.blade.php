@@ -27,6 +27,7 @@ new class extends Component {
 
 <div>
     <div>
+        <livewire:posts.create-post />
         <ul class="shadow-md list bg-base-100 rounded-box">
             <li class="p-4 pb-2 text-xs tracking-wide opacity-60">All Posts</li>
             @for ($chunk = 0 ; $chunk < $page; $chunk++)
