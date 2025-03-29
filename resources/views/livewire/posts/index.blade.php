@@ -31,7 +31,7 @@ new class extends Component {
             <li class="p-4 pb-2 text-xs tracking-wide opacity-60">All Posts</li>
             @for ($chunk = 0 ; $chunk < $page; $chunk++)
                 <li>
-                <livewire:posts.post-chunk :ids="$this->chunks[$chunk]" :key="$chunk" />
+                <livewire:posts.post-chunk :ids="$this->chunks[$chunk]" :key="$chunk" :chunk="$chunk" />
                 </li>
                 @endfor
                 @if ($this->hasMorePages())

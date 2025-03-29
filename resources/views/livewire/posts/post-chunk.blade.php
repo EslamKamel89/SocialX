@@ -5,14 +5,14 @@ use App\Models\Post;
 use Livewire\Volt\Component;
 
 new class extends Component {
-
+    public ?int $chunk = null;
     public $ids = [];
     public function with(): array {
         return [
-            'posts' => pr::log(Post::whereIn('id', $this->ids)
+            'posts' => Post::whereIn('id', $this->ids)
                 ->with(['user'])
                 ->latest()
-                ->get())
+                ->get()
         ];
     }
 }; ?>

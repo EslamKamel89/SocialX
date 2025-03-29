@@ -15,4 +15,16 @@ class pr {
         info(json_encode($value));
         return $value;
     }
+    /**
+     * @template T
+     * @param T $value
+     * @param  string | null $title
+     *
+     * @return T
+     */
+    public static function dump($value, string | null $title = null) {
+        info("-=-=-=-=--=- -=-=-=-=--=- {$title} -=-=-=-=--=- -=-=-=-=--=-");
+        dump($value);
+        return $value;
+    }
 }
