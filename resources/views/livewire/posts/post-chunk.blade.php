@@ -2,10 +2,12 @@
 
 use App\Helpers\pr;
 use App\Models\Post;
+use Livewire\Attributes\Reactive;
 use Livewire\Volt\Component;
 
 new class extends Component {
     public ?int $chunk = null;
+    #[Reactive()]
     public $ids = [];
     public function with(): array {
         return [

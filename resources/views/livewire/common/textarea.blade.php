@@ -14,6 +14,6 @@ state(['placeholder']);
         placeholder="{{ $placeholder }}"
         class="w-full border rounded-lg "></textarea>
     @if($error)
-    <p class="mx-4 text-xs text-red-500">{{ $error[0] }}</p>
+    <p class="mx-4 mb-2 text-xs text-red-500">{{ $error }}</p>
     @endif
 </div>
