@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PostCreatedEvent;
 use Livewire\Volt\Component;
 use App\Helpers\pr;
 use Livewire\Attributes\Rule;
@@ -14,6 +15,7 @@ new class extends Component {
         ]);
         $this->reset('body');
         $this->dispatch('post.created', $post->id);
+        broadcast(new PostCreatedEvent($post->id))->toOthers();
     }
 }; ?>
 
