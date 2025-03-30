@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\ExampleEvent;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,4 +13,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+
+Route::get('/test', function (Request $request) {
+    ExampleEvent::dispatch();
+});
+require __DIR__ . '/auth.php';

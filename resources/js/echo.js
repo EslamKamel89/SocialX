@@ -14,3 +14,7 @@ window.Echo = new Echo({
     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER,
     forceTLS: true,
 });
+// var channel = window.Echo.channel("posts");
+// channel.listen("ExampleEvent", function (data) {
+//     alert(JSON.stringify(data));
+// });

@@ -31,6 +31,10 @@ new class extends Component {
         }
         $this->chunks[0] = [$postId, ...$this->chunks[0]];
     }
+    // #[On('echo:posts,ExampleEvent')]
+    // public function testEvent() {
+    //     dd('Event recieved');
+    // }
 }; ?>
 
 <div>
