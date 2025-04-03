@@ -7,6 +7,8 @@ new class extends Component {
     public Post $post;
     public function delete() {
     }
+    public function edit() {
+    }
 }; ?>
 
 <div>
@@ -26,6 +28,9 @@ new class extends Component {
                     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
                 </g>
             </svg>
+        </button>
+        <button class="btn btn-square btn-ghost" wire:click="edit">
+            <x-icons.edit class="w-5 h-5 text-blue-900" />
         </button>
         <button class="btn btn-square btn-ghost" wire:confirm="Are you sure you want to delete this post?" wire:click="delete">
             <x-icons.trash class="w-5 h-5 text-red-900" />
