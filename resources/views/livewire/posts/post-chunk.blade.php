@@ -2,20 +2,27 @@
 
 use App\Helpers\pr;
 use App\Models\Post;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Reactive;
 use Livewire\Volt\Component;
 
 new class extends Component {
     public ?int $chunk = null;
-    #[Reactive()]
+    // #[Reactive()]
     public $ids = [];
+
     public function with(): array {
+        // pr::dump($this->chunk, 'chunk index');
         return [
             'posts' => Post::whereIn('id', $this->ids)
                 ->with(['user'])
                 ->latest()
                 ->get()
         ];
+    }
+    #[On('post.{chunk}.prepend')]
+    public function prependToChunk($postId) {
+        $this->ids = [$postId, ...$this->ids ?? []];
     }
 }; ?>
 

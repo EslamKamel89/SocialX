@@ -30,6 +30,7 @@ new class extends Component {
             $this->chunks[] = [];
         }
         $this->chunks[0] = [$postId, ...$this->chunks[0]];
+        $this->dispatch('post.0.prepend', $postId);
     }
     #[On('echo:posts,PostCreatedEvent')]
     public function prependPostFromBroadcast(array $payload) {
