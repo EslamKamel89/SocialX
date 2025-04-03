@@ -24,6 +24,11 @@ new class extends Component {
     public function prependToChunk($postId) {
         $this->ids = [$postId, ...$this->ids ?? []];
     }
+    #[On('post.{chunk}.deleted')]
+    public function deletePost($postId) {
+        $key = array_search($postId, $this->ids);
+        unset($this->ids[$key]);
+    }
 }; ?>
 
 <div>

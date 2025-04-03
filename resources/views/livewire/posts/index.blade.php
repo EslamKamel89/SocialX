@@ -47,6 +47,7 @@ new class extends Component {
             foreach ($chunk as $k => $id) {
                 if ($postId == $id) {
                     unset($chunk[$k]);
+                    $this->dispatch("post.{$i}.deleted", $postId);
                     return;
                 }
             }
