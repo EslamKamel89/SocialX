@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 [x-cloak] {
-    dispaly: none;
+    dispaly: none !important;
 }

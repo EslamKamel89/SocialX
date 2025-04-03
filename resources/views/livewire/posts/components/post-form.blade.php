@@ -2,15 +2,22 @@
 
 use Livewire\Volt\Component;
 use App\Models\Post;
+use Livewire\Attributes\Rule;
 
 new
     class extends Component {
         public Post $post;
+        #[Rule('required')]
         public ?string $body = null;
         public function mount() {
             $this->body = $this->post->body;
         }
         public function submit() {
+            $this->validate();
+            $this->post->update([
+                'body' => $this->body,
+            ]);
+            $this->dispatch(event: "post.{$this->post->id}.updated");
         }
     }; ?>
 <div class="!w-full">
@@ -21,7 +28,7 @@ new
             placeholder="What do you want to say"
             :error="$errors->get('body')[0] ?? null" />
         <div>
-            <button type="submit" class="text-white btn btn-sm btn-success">Edit</button>
+            <button type="submit" class="text-white btn btn-sm btn-success">Save</button>
         </div>
     </form>
 </div>

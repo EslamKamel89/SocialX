@@ -2,9 +2,11 @@
 
 use Livewire\Volt\Component;
 use App\Models\Post;
+use Livewire\Attributes\Reactive;
 
 new
     class extends Component {
+        #[Reactive]
         public Post $post;
     }; ?>
 <div class="list-row">

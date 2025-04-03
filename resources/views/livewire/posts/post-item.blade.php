@@ -1,26 +1,32 @@
 <?php
 
 use App\Events\PostDeletedEvent;
+use App\Helpers\pr;
 use Livewire\Volt\Component;
 use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
+use Livewire\Attributes\On;
 
 new
     class extends Component {
         public Post $post;
         public function delete() {
             Gate::authorize('delete', $this->post);
+            $this->validate();
             $postId = $this->post->id;
             $this->post->delete();
             $this->dispatch('post.deleted', $postId);
             broadcast(new PostDeletedEvent($postId))->toOthers();
         }
+        #[On(("post.{post.id}.updated"))]
         public function edit() {
+            $this->dispatch('post-item-hide-form');
+            // $this->post->refresh();
         }
     }; ?>
 
 <div>
-    <li class="flex items-center justify-between list-row" x-data="{showForm:false}" x-cloak>
+    <li class="flex items-center justify-between list-row" x-data="{showForm:false}" x-cloak x-on:post-item-hide-form.window="showForm=false">
         <div x-show="!showForm" class="shrink-0">
             <livewire:posts.components.post-info :post="$post" />
         </div>
