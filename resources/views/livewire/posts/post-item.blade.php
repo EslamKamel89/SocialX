@@ -9,7 +9,9 @@ new
         public Post $post;
         public function delete() {
             Gate::authorize('delete', $this->post);
+            $postId = $this->post->id;
             $this->post->delete();
+            $this->dispatch('post.deleted', $postId);
         }
         public function edit() {
         }
