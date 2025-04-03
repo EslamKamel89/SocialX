@@ -35,6 +35,11 @@ new class extends Component {
     public function prependPostFromBroadcast(array $payload) {
         $this->prependPost($payload['postId']);
     }
+    #[On('echo:posts,PostDeletedEvent')]
+    public function deletePostFromBroadcast(array $payload) {
+        $this->deletePost($payload['postId']);
+    }
+
     #[On('post.deleted')]
     public function deletePost(int $postId) {
         foreach ($this->chunks as $i => $chunk) {

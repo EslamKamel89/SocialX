@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PostDeletedEvent;
 use Livewire\Volt\Component;
 use App\Models\Post;
 use Illuminate\Support\Facades\Gate;
@@ -12,6 +13,7 @@ new
             $postId = $this->post->id;
             $this->post->delete();
             $this->dispatch('post.deleted', $postId);
+            broadcast(new PostDeletedEvent($postId))->toOthers();
         }
         public function edit() {
         }
