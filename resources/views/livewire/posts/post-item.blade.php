@@ -23,6 +23,11 @@ new
             $this->dispatch('post-item-hide-form');
             // $this->post->refresh();
         }
+        public function getListeners() {
+            return [
+                "echo:posts.{$this->post->id},PostUpdatedEvent" => '$refresh',
+            ];
+        }
     }; ?>
 
 <div>

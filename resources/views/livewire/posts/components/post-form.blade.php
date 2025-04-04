@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\PostUpdatedEvent;
 use Livewire\Volt\Component;
 use App\Models\Post;
 use Livewire\Attributes\Rule;
@@ -18,6 +19,7 @@ new
                 'body' => $this->body,
             ]);
             $this->dispatch(event: "post.{$this->post->id}.updated");
+            broadcast(new PostUpdatedEvent($this->post->id))->toOthers();
         }
     }; ?>
 <div class="!w-full">
