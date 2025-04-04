@@ -6,7 +6,7 @@ use Livewire\Attributes\Reactive;
 
 new
     class extends Component {
-        #[Reactive]
+        // #[Reactive]
         public Post $post;
     }; ?>
 <div class="list-row">

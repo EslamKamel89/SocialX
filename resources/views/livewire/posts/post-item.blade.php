@@ -10,11 +10,13 @@ use Livewire\Attributes\On;
 new
     class extends Component {
         public Post $post;
+        protected $listeners = [];
+
         public function delete() {
             Gate::authorize('delete', $this->post);
-            $this->validate();
             $postId = $this->post->id;
             $this->post->delete();
+
             $this->dispatch('post.deleted', $postId);
             broadcast(new PostDeletedEvent($postId))->toOthers();
         }
@@ -33,7 +35,7 @@ new
 <div>
     <li class="flex items-center justify-between list-row" x-data="{showForm:false}" x-cloak x-on:post-item-hide-form.window="showForm=false">
         <div x-show="!showForm" class="shrink-0">
-            <livewire:posts.components.post-info :post="$post" />
+            <livewire:posts.components.post-info :post="$post" :key="$post->body" />
         </div>
         <div x-show="showForm" class="block w-full grow-1">
             <livewire:posts.components.post-form :post="$post" x-on:cancel="showForm=false" />
