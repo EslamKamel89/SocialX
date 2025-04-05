@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\PostDeletedEvent;
+use App\Events\PostLikedEvent;
 use App\Helpers\pr;
 use Livewire\Volt\Component;
 use App\Models\Post;
@@ -29,10 +30,13 @@ new
         public function getListeners() {
             return [
                 "echo:posts.{$this->post->id},PostUpdatedEvent" => '$refresh',
+                "echo:posts.{$this->post->id},PostLikedEvent" => '$refresh'
             ];
         }
         public function incrementLike() {
             $this->post->increment('likes');
+            broadcast(new PostLikedEvent($this->post->id))
+                ->toOthers();
         }
     }; ?>
 
