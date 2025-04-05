@@ -10,6 +10,7 @@ use Livewire\Attributes\On;
 new
     class extends Component {
         public Post $post;
+        public bool $isLiked = true;
         protected $listeners = [];
 
         public function delete() {
@@ -29,6 +30,9 @@ new
             return [
                 "echo:posts.{$this->post->id},PostUpdatedEvent" => '$refresh',
             ];
+        }
+        public function incrementLike() {
+            $this->post->increment('likes');
         }
     }; ?>
 
@@ -52,8 +56,12 @@ new
                 <x-icons.trash class="w-5 h-5 text-red-900" />
             </button>
             @endcan
-            <button class="btn btn-square btn-ghost">
-                <x-icons.heart />
+            <button class="relative btn btn-square btn-ghost" wire:click="incrementLike">
+
+                <x-icons.heart class="{{ $isLiked ? 'text-red-500' : 'text-gray-400' }}" />
+                @if($post->likes)
+                <div class="absolute px-2 py-1 text-xs text-white border rounded-full -top-2 -right-4 bg-slate-700">{{ $post->likes }}</div>
+                @endif
             </button>
         </div>
     </li>
