@@ -34,7 +34,7 @@ new
 
 <div>
     <li class="flex items-center justify-between list-row" x-data="{showForm:false}" x-cloak x-on:post-item-hide-form.window="showForm=false">
-        <div x-show="!showForm" class="shrink-0">
+        <div x-show="!showForm" class="">
             <livewire:posts.components.post-info :post="$post" :key="$post->body" />
         </div>
         <div x-show="showForm" class="block w-full grow-1">
